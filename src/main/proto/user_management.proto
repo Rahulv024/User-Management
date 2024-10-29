@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.user.management;
+option java_package = "com.example.ds";
+option java_multiple_files = true;
+
+message User {
+  string user_id = 1;
+  string name = 2;
+}
+
+message AddUserRequest {
+  User user = 1;
+}
+
+message AddUserResponse {
+  string message = 1;
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+  string message = 2;
+}
+
+service UserManagement {
+  rpc AddUser (AddUserRequest) returns (AddUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
